@@ -6,7 +6,9 @@ const Student = require('./models/student');
 const app = express();
 
 // الاتصال بقاعدة بيانات MongoDB
-mongoose.connect('mongodb://127.0.0.1:27017/student-management')
+const dbURI = process.env.MONGO_URI;
+
+mongoose.connect(dbURI)
     .then(() => console.log('تم الاتصال بقاعدة البيانات بنجاح'))
     .catch(err => console.error('خطأ في الاتصال بقاعدة البيانات:', err));
 
